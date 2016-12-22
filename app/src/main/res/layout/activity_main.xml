@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context="com.ardic.android.sampleiotigniteprojectwithdynamicconfigurations.activity.HomeActivity">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/nodeIDTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:gravity="start"
+            android:text="@string/no_available_node"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/deleteNodeImgView"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@drawable/delete_icon"
+            android:visibility="gone" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right">
+
+            <ImageView
+                android:id="@+id/igniteStatusImgView"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_margin="5dp"
+                android:src="@drawable/disconnected" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/sensorDashboardLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <!-- Icons Layout -->
+        <LinearLayout
+            android:id="@+id/temperatureLinearLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/temperatureImageView"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_margin="5dp"
+                android:background="@mipmap/temperature16" />
+
+            <ImageView
+                android:id="@+id/humidityImageView"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_margin="5dp"
+                android:background="@mipmap/waterdrop" />
+
+
+            <ImageView
+                android:id="@+id/ledImageView"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_margin="5dp"
+                android:background="@mipmap/led2_off" />
+
+
+        </LinearLayout>
+        <!-- End of Icons Layout -->
+
+
+        <!-- Text Layout -->
+        <LinearLayout
+            android:id="@+id/textLinearLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/temperatureTextView"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_margin="5dp"
+                android:gravity="center"
+                android:text="\u2103"
+                android:textSize="50sp"
+                android:textStyle="bold" />
+
+
+            <TextView
+                android:id="@+id/humidityTextView"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_margin="5dp"
+                android:gravity="center"
+                android:text="%"
+                android:textSize="50sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/ledTextView"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_margin="5dp"
+                android:gravity="center"
+                android:text="OFF"
+                android:textSize="50sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+        <!-- End of Text Layout -->
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

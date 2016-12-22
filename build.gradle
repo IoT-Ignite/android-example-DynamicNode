@@ -1,0 +1,54 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    repositories {
+        jcenter()
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:2.2.3'
+        classpath "org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:2.0.1"
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+plugins {
+    id "org.sonarqube" version "2.0.1"
+}
+
+allprojects {
+    repositories {
+        jcenter()
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+
+sonarqube {
+    properties {
+        property "sonar.sourceEncoding", "UTF-8"
+        property "sonar.sources", "src"
+        property "sonar.projectName","SampleIotIgniteProject"
+        property "sonar.projectVersion","1.0"
+    }
+}
+
+subprojects {
+    sonarqube {
+        properties {
+            property "sonar.sourceEncoding", "UTF-8"
+            property "sonar.sources", "src"
+            property "sonar.projectName","SampleIotIgniteProject"
+            property "sonar.projectVersion","1.0"
+        }
+    }
+}

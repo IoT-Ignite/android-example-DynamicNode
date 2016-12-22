@@ -1,0 +1,97 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion "23.0.3"
+
+    def versionPropsFile = file('version.properties')
+
+    if (versionPropsFile.canRead()) {
+        def Properties versionProps = new Properties()
+
+        versionProps.load(new FileInputStream(versionPropsFile))
+
+        def code = versionProps['VERSION_CODE'].toInteger() + 1
+
+        versionProps['VERSION_CODE'] = code.toString()
+        versionProps.store(versionPropsFile.newWriter(), null)
+
+        defaultConfig {
+            applicationId "com.ardic.android.sampleiotigniteprojectwithdynamicconfigurations"
+            versionCode code
+            versionName "0.8." + (versionProps['VERSION_CODE'].toInteger() - 8)
+            minSdkVersion 16
+            targetSdkVersion 23
+        }
+    } else {
+        throw new GradleException("Could not read version.properties!")
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            applicationVariants.all {
+                variant -> renameAPK(variant, defaultConfig, 'R')
+            }
+        }
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    signingConfigs {
+        release {
+            storeFile file(RELEASE_STORE_FILE)
+            storePassword RELEASE_STORE_PASSWORD
+            keyAlias RELEASE_KEY_ALIAS
+            keyPassword RELEASE_KEY_PASSWORD
+        }
+        debug {
+            storeFile file(RELEASE_STORE_FILE)
+            storePassword RELEASE_STORE_PASSWORD
+            keyAlias RELEASE_KEY_ALIAS
+            keyPassword RELEASE_KEY_PASSWORD
+        }
+    }
+    buildTypes {
+        release {
+            signingConfig signingConfigs.release
+        }
+        debug {
+            signingConfig signingConfigs.debug
+        }
+    }
+}
+repositories {
+    mavenCentral()
+    maven {
+        url "http://repo.maven.apache.org/maven2"
+    }
+
+    maven {
+        url "https://repo.iot-ignite.com/content/repositories/releases"
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    testCompile 'junit:junit:4.12'
+    compile 'com.android.support:appcompat-v7:23.2.1'
+    compile 'com.ardic.android.iot:HwNodeAppTemplates:1.0'
+    compile 'com.ardic.android:IoTIgnite:0.7'
+    compile 'com.ardic.android:utilitylib:0.1'
+    compile 'com.ardic.android:connectivitylib:0.2'
+    compile 'org.apache.commons:commons-lang3:3.4'
+    compile 'com.afollestad.material-dialogs:core:0.9.1.0'
+    compile 'com.google.code.gson:gson:2.6.2'
+    compile 'org.jmdns:jmdns:3.5.1'
+}
+
+def renameAPK(variant, defaultConfig, buildType) {
+    variant.outputs.each { output ->
+        def formattedDate = new Date().format('yyyyMMdd')
+            def file = output.outputFile
+            def fileName = applicationName + "_v" + defaultConfig.versionName + "_" + formattedDate + "_" + buildType + ".apk"
+            output.outputFile = new File(file.parent, fileName)
+    }
+}

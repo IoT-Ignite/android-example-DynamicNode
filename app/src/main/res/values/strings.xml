@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">IotIgnite Dynamic Node Example</string>
+    <string name="deleteNode">Delete Node</string>
+    <string name="no_available_node">No active esp found. Searching...</string>
+</resources>
