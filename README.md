@@ -37,7 +37,7 @@ _Arduino Specific Libraries:_
 
 ### 2.Installation and Running
 
-![DynamicNodeExample Pin Map](dynamicNodeExamplePinMap.png)
+![DynamicNodeExample Pin Map](docs/dynamicNodeExamplePinMap.png)
 
 
 Compile Arduino Sketch with __*DynamicNodeExample.ino*__  name, and flash it to NodeMCU. After flashing, NodeMCU is going to run in __AccessPoint__ mode.
@@ -47,11 +47,11 @@ Run SPA to register your NodeMCU.
 Install IoTIgniteAgent on your Android IoT gateway and license it.
 Install DynamicNodeExample application to gateway. Screenshot is as follows when no node is connected:
 
-![Searching Node](searchingNode.png)
+![Searching Node](docs/searchingNode.png)
 
 **When a node is connected:**
 
-![Connected Node](connectedNode.png)
+![Connected Node](docs/connectedNode.png)
 
 
 
@@ -70,7 +70,7 @@ When it discovers gateway, it sends node inventory to customer application and w
 
 All TCP/IP communication between NodeMCU and gateway uses JSON as message format.
 
-![NodeMCU State Diagram](nodeMcuState.png)
+![NodeMCU State Diagram](docs/nodeMcuState.png)
 
 ```c++
 #include <Arduino.h>
