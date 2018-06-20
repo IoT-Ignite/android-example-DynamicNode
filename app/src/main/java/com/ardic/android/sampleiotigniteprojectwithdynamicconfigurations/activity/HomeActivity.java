@@ -1,5 +1,6 @@
 package com.ardic.android.sampleiotigniteprojectwithdynamicconfigurations.activity;
 
+import android.app.Activity;
 import android.content.ActivityNotFoundException;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -36,7 +37,7 @@ import org.json.JSONObject;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
-public class HomeActivity extends AppCompatActivity implements View.OnClickListener, WifiNodeManagerListener, CompatibilityListener {
+public class HomeActivity extends Activity implements View.OnClickListener, WifiNodeManagerListener, CompatibilityListener {
 
     private static final String TAG = "Dynamic Node App";
     private static final String LED_TEXT_OFF = "OFF";
